@@ -120,6 +120,14 @@
       complete: function () {
         successMessage.style.display = "block";
         errorMessage.style.display = "none";
+        // 清空欄位與重設狀態
+        nameInput.value = "";
+        emailInput.value = "";
+        notesInput.value = "";
+        nameInput.style.border = "";
+        emailInput.style.border = "";
+        inputError.name = "";
+        inputError.email = "";
       },
     });
   }
