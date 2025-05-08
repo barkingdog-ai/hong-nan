@@ -11,6 +11,14 @@
   );
   const errorMessage = document.querySelector(".combine-form_error-message");
 
+  // Modal 元素
+  const modal = document.getElementById("custom-modal");
+  const modalAgree = document.getElementById("modal-agree");
+  const modalDisagree = document.getElementById("modal-disagree");
+  const modalOverlay = modal
+    ? modal.querySelector(".combine-modal__overlay")
+    : null;
+
   const inputError = {};
 
   nameInput.addEventListener("blur", (event) => {
@@ -39,10 +47,61 @@
     }
   });
 
-  submitButton.addEventListener("click", handleSubmit);
-
-  function handleSubmit(event) {
+  // 攔截送出，先顯示 modal
+  submitButton.addEventListener("click", function (event) {
     event.preventDefault();
+    // 若有錯誤不開啟 modal
+    if (nameInput.value.trim() === "" || emailInput.value.trim() === "") {
+      errorMessage.style.display = "block";
+      return;
+    }
+    openModal();
+  });
+
+  // Modal 控制
+  function openModal() {
+    if (!modal) return;
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      modal.querySelector(".combine-modal__content").focus?.();
+    }, 0);
+  }
+  function closeModal() {
+    if (!modal) return;
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+
+  // Modal 按鈕事件
+  if (modalAgree) {
+    modalAgree.addEventListener("click", function () {
+      closeModal();
+      actuallySubmit();
+    });
+  }
+  if (modalDisagree) {
+    modalDisagree.addEventListener("click", function () {
+      closeModal();
+    });
+  }
+  if (modalOverlay) {
+    modalOverlay.addEventListener("click", function () {
+      closeModal();
+    });
+  }
+  // ESC 關閉
+  document.addEventListener("keydown", function (e) {
+    if (
+      modal.style.display === "flex" &&
+      (e.key === "Escape" || e.key === "Esc")
+    ) {
+      closeModal();
+    }
+  });
+
+  // 真正送出表單
+  function actuallySubmit() {
     const nameValue = nameInput.value;
     const emailValue = emailInput.value;
     const notesValue = notesInput.value;

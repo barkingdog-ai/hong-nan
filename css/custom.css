@@ -1,0 +1,54 @@
+/* Modal 遮罩 */
+.combine-modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+.combine-modal__overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.combine-modal__content {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: 32px 24px 24px 24px;
+  min-width: 280px;
+  max-width: 90vw;
+  z-index: 1;
+  text-align: center;
+}
+.combine-modal__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #333;
+}
+.combine-modal__desc {
+  font-size: 1rem;
+  margin-bottom: 24px;
+  color: #333;
+}
+.combine-modal__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+@media (max-width: 600px) {
+  .combine-modal__content {
+    padding: 20px 8px 16px 8px;
+    min-width: 0;
+  }
+}

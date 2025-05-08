@@ -24,6 +24,7 @@
       rel="preconnect"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/custom.css" />
     <script
       src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
       type="text/javascript"
@@ -199,6 +200,39 @@
                 </button>
               </form>
               <!-- 預約表單 End -->
+
+              <!-- Modal for form confirmation -->
+              <div
+                id="custom-modal"
+                class="combine-modal"
+                style="display: none"
+              >
+                <div class="combine-modal__overlay"></div>
+                <div class="combine-modal__content">
+                  <h3 class="combine-modal__title">請確認</h3>
+                  <p class="combine-modal__desc">
+                    送出前請確認資料正確，是否同意送出？
+                  </p>
+                  <div class="combine-modal__actions">
+                    <button
+                      id="modal-agree"
+                      type="button"
+                      class="combine-button w-button"
+                    >
+                      同意
+                    </button>
+                    <button
+                      id="modal-disagree"
+                      type="button"
+                      class="combine-button w-button"
+                      style="background: #eee; color: #333"
+                    >
+                      不同意
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal End -->
 
               <div class="combine-form_success-message w-form-done">
                 <div>Thank you! Your submission has been received!</div>
