@@ -1252,7 +1252,7 @@ img {
 }
 
 .slide {
-  background-image: url('../images/等待照片提供.png');
+  background-image: url('../images/02-06-07切妻.jpg');
   background-position: 50%;
   background-size: cover;
   padding-bottom: 0;
@@ -1278,7 +1278,7 @@ img {
 }
 
 .slide-2 {
-  background-image: url('../images/等待照片提供.png');
+  background-image: url('../images/02-06-01鬼瓦.webp');
   background-position: 50%;
   background-size: cover;
 }
@@ -1288,7 +1288,7 @@ img {
 }
 
 .slide-3 {
-  background-image: url('../images/等待照片提供.png');
+  background-image: url('../images/02-06-02順砌磚牆布基礎通風孔.webp');
   background-position: 50%;
   background-size: cover;
 }
@@ -2221,7 +2221,7 @@ img {
 .div-block-59 {
   aspect-ratio: auto;
   object-fit: fill;
-  height: 55%;
+  height: 100%;
   overflow: clip;
 }
 
@@ -2423,19 +2423,54 @@ img {
 }
 
 .div-block-64, .div-block-65 {
-  height: 55%;
+  height: 100%;
   overflow: clip;
 }
 
 .image-46 {
   position: relative;
-  top: -116px;
+  inset: -12% 0% 0%;
   overflow: clip;
 }
 
 .grid-30 {
   grid-template-rows: auto auto;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.image-47 {
+  aspect-ratio: auto;
+  vertical-align: middle;
+  position: relative;
+  top: -73px;
+}
+
+.div-block-66 {
+  background-image: url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
+  background-position: 50%;
+  background-size: auto;
+}
+
+.div-block-67 {
+  box-sizing: border-box;
+  aspect-ratio: auto;
+  object-fit: fill;
+}
+
+.slide-12 {
+  aspect-ratio: auto;
+  object-fit: fill;
+  background-image: url('../images/0首頁_宏南畫廊_00-2-3宿舍修復工程中_屋架1.webp');
+  background-position: 50% 100%;
+  background-size: auto;
+  position: static;
+  inset: 0%;
+}
+
+.slide-13 {
+  background-image: url('../images/0首頁_宏南畫廊_00-2-1宿舍修復工程中.webp');
+  background-position: 50% 100%;
+  background-size: auto;
 }
 
 @media screen and (max-width: 991px) {
