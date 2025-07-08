@@ -51,6 +51,8 @@
     </script>
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="images/webclip.png" rel="apple-touch-icon" />
+    <!-- Modal CSS -->
+    <link href="css/house-modal.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="body-3">
     <div id="anchor" class="anchor"></div>
@@ -322,7 +324,43 @@
                 images/02-02-01和小屋房屋結構.jpg        1920w
               "
               alt=""
+              usemap="#image-map-house"
             />
+            <!-- image map -->
+            <map name="image-map-house">
+              <area
+                target="_self"
+                alt="屋架"
+                title="屋架"
+                href=""
+                coords="1535,188,1660,237"
+                shape="rect"
+              />
+              <area
+                target="_self"
+                alt="軸組"
+                title="軸組"
+                href=""
+                coords="1535,580,1662,621"
+                shape="rect"
+              />
+              <area
+                target="_self"
+                alt="床組"
+                title="床組"
+                href=""
+                coords="1533,819,1662,872"
+                shape="rect"
+              />
+              <area
+                target="_self"
+                alt="布基礎"
+                title="布基礎"
+                href=""
+                coords="1532,946,1662,996"
+                shape="rect"
+              />
+            </map>
             <h1 class="heading-31">和小屋(屋架)</h1>
           </div>
         </div>
@@ -609,7 +647,7 @@
             target="_self"
             alt="H區"
             title="H區"
-            href="https://www.google.com/"
+            href="#"
             coords="583,488,747,653"
             shape="rect"
           />
@@ -617,7 +655,7 @@
             target="_self"
             alt="Q區"
             title="Q區"
-            href="https://www.google.com/"
+            href="#"
             coords="581,405,1337,480"
             shape="rect"
           />
@@ -625,7 +663,7 @@
             target="_self"
             alt="D區"
             title="D區"
-            href="https://www.google.com/"
+            href="#"
             coords="747,822,710,824,710,800,581,799,584,660,749,658"
             shape="poly"
           />
@@ -633,7 +671,7 @@
             target="_self"
             alt="G區"
             title="G區"
-            href="https://www.google.com/"
+            href="#"
             coords="749,488,957,487,957,649,918,653,920,675,839,673,829,651,751,651"
             shape="poly"
           />
@@ -641,7 +679,7 @@
             target="_self"
             alt="F區"
             title="F區"
-            href="https://www.google.com/"
+            href="#"
             coords="966,490,1169,488,1166,651,1090,653,1085,675,1005,676,998,649,963,651"
             shape="poly"
           />
@@ -1299,6 +1337,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/webflow.js" type="text/javascript"></script>
+    <!-- Modal JavaScript -->
+    <script src="js/house-modal.js" type="text/javascript"></script>
 
     <!-- 改良版 Image Map 響應式解決方案 -->
     <script>
@@ -1347,28 +1387,28 @@
           areas.forEach((area) => {
             area.addEventListener("click", function (e) {
               e.preventDefault(); // 阻止預設行為
-              
+
               // 區域名稱對應的 ID
               const areaToId = {
-                'H區': 'h_area',
-                'Q區': 'q_area', 
-                'D區': 'd_area',
-                'G區': 'g_area',
-                'F區': 'f_area'
+                H區: "h_area",
+                Q區: "q_area",
+                D區: "d_area",
+                G區: "g_area",
+                F區: "f_area",
               };
-              
+
               const targetId = areaToId[area.alt];
               if (targetId) {
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
                   // 平滑滾動到目標區域
                   targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                    behavior: "smooth",
+                    block: "start",
                   });
-                  console.log('滾動到:', area.alt);
+                  console.log("滾動到:", area.alt);
                 } else {
-                  console.error('找不到目標元素:', targetId);
+                  console.error("找不到目標元素:", targetId);
                 }
               }
             });
@@ -1403,5 +1443,16 @@
         setTimeout(initImageMap, 500);
       })();
     </script>
+
+    <!-- Modal 結構 -->
+    <div id="houseModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title"></h2>
+          <button class="modal-close" type="button">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
   </body>
 </html>

@@ -3,7 +3,8 @@
     "allow": [
       "mcp__playwright__browser_navigate",
       "mcp__playwright__browser_click",
-      "mcp__playwright__browser_console_messages"
+      "mcp__playwright__browser_console_messages",
+      "Bash(rg:*)"
     ],
     "deny": []
   }
