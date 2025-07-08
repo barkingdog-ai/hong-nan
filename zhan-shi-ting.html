@@ -586,7 +586,7 @@
       </div>
       <div class="w-layout-blockcontainer container-28 w-container">
         <h1 class="heading-42">室內展示</h1>
-        <div class="div-block-58">
+        <div class="div-block-58" style="position: relative">
           <img
             src="images/02_室內5-1平面圖.webp"
             loading="lazy"
@@ -599,10 +599,54 @@
               images/02_室內5-1平面圖.webp        1920w
             "
             alt=""
+            usemap="#image-map"
+            style="pointer-events: auto; position: relative; z-index: 1"
           />
         </div>
-
-        <h1 class="heading-43">G區｜遠眺臺灣 回憶六燃</h1>
+        <!--  image map -->
+        <map name="image-map">
+          <area
+            target="_self"
+            alt="H區"
+            title="H區"
+            href="https://www.google.com/"
+            coords="583,488,747,653"
+            shape="rect"
+          />
+          <area
+            target="_self"
+            alt="Q區"
+            title="Q區"
+            href="https://www.google.com/"
+            coords="581,405,1337,480"
+            shape="rect"
+          />
+          <area
+            target="_self"
+            alt="D區"
+            title="D區"
+            href="https://www.google.com/"
+            coords="747,822,710,824,710,800,581,799,584,660,749,658"
+            shape="poly"
+          />
+          <area
+            target="_self"
+            alt="G區"
+            title="G區"
+            href="https://www.google.com/"
+            coords="749,488,957,487,957,649,918,653,920,675,839,673,829,651,751,651"
+            shape="poly"
+          />
+          <area
+            target="_self"
+            alt="F區"
+            title="F區"
+            href="https://www.google.com/"
+            coords="966,490,1169,488,1166,651,1090,653,1085,675,1005,676,998,649,963,651"
+            shape="poly"
+          />
+        </map>
+        <h1 class="heading-43" id="g_area">G區｜遠眺臺灣 回憶六燃</h1>
         <p class="paragraph-32">
           以日籍軍官的視角，呈現來台參與六燃建設、經歷美軍轟炸，最終被遣返日本的心路歷程。
         </p>
@@ -639,7 +683,7 @@
             alt=""
           />
         </div>
-        <h1 class="heading-43">H區｜廠宿似城聚落重現</h1>
+        <h1 class="heading-43" id="h_area">H區｜廠宿似城聚落重現</h1>
         <p class="paragraph-32">
           宿舍內設置學校、餐廳、體育館等生活設施；同時體驗24小時待命與生活廣播，營造「廠宿合一」的氛圍。
         </p>
@@ -680,7 +724,7 @@
             />
           </div>
         </div>
-        <h1 class="heading-43">D區｜致敬老油人展現藝采</h1>
+        <h1 class="heading-43" id="d_area">D區｜致敬老油人展現藝采</h1>
         <p class="paragraph-32">
           展出「向高雄煉油廠的老油人致敬」影片；及高廠員工創作的「水彩畫、書法及書籍」作品。
         </p>
@@ -790,7 +834,7 @@
           />
         </div>
         <div>
-          <h1 class="heading-43">Q區｜邁向淨零排放的未來</h1>
+          <h1 class="heading-43" id="q_area">Q區｜邁向淨零排放的未來</h1>
           <p class="paragraph-32">
             透過「抓碳」與「加壓氫氣」互動體驗，傳達中油在減碳與推廣加氫站的努力，寓教於樂。
           </p>
@@ -834,7 +878,7 @@
           </div>
         </div>
         <div id="w-node-f73cc7f8-ceff-c2c2-1c73-35241c143504-1deaa2ff">
-          <h1 class="heading-44">F區｜古蹟修復與祈願祝福</h1>
+          <h1 class="heading-44" id="f_area">F區｜古蹟修復與祈願祝福</h1>
           <p class="paragraph-32">
             展示古蹟修復工法影片，呈現精湛工藝精神；邀請訪客在雨豆祈願樹下寫下祝福，感受展覽的溫馨互動氛圍。
           </p>
@@ -1255,5 +1299,109 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/webflow.js" type="text/javascript"></script>
+
+    <!-- 改良版 Image Map 響應式解決方案 -->
+    <script>
+      (function () {
+        let isInitialized = false;
+
+        function initImageMap() {
+          if (isInitialized) return;
+
+          const img = document.querySelector('img[usemap="#image-map"]');
+          const areas = document.querySelectorAll('map[name="image-map"] area');
+
+          if (!img || !areas.length) {
+            console.log("Image map 元素未找到，稍後重試...");
+            return;
+          }
+
+          // 原始圖片座標（基於 1920px 寬度）
+          const originalCoords = {
+            H區: "583,488,747,653",
+            Q區: "581,405,1337,480",
+            D區: "747,822,710,824,710,800,581,799,584,660,749,658",
+            G區: "749,488,957,487,957,649,918,653,920,675,839,673,829,651,751,651",
+            F區: "966,490,1169,488,1166,651,1090,653,1085,675,1005,676,998,649,963,651",
+          };
+
+          function updateCoords() {
+            if (!img.clientWidth) return; // 圖片還沒載入完成
+
+            const scale = img.clientWidth / 1920;
+            console.log("更新座標，縮放比例:", scale);
+
+            areas.forEach((area) => {
+              const originalCoord = originalCoords[area.alt];
+              if (originalCoord) {
+                const coords = originalCoord
+                  .split(",")
+                  .map((coord) => Math.round(parseFloat(coord) * scale))
+                  .join(",");
+                area.coords = coords;
+              }
+            });
+          }
+
+          // 添加點擊事件（只添加一次）
+          areas.forEach((area) => {
+            area.addEventListener("click", function (e) {
+              e.preventDefault(); // 阻止預設行為
+              
+              // 區域名稱對應的 ID
+              const areaToId = {
+                'H區': 'h_area',
+                'Q區': 'q_area', 
+                'D區': 'd_area',
+                'G區': 'g_area',
+                'F區': 'f_area'
+              };
+              
+              const targetId = areaToId[area.alt];
+              if (targetId) {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                  // 平滑滾動到目標區域
+                  targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                  console.log('滾動到:', area.alt);
+                } else {
+                  console.error('找不到目標元素:', targetId);
+                }
+              }
+            });
+          });
+
+          // 立即更新一次
+          updateCoords();
+
+          // 監聽視窗大小改變
+          window.addEventListener("resize", updateCoords);
+
+          // 監聽圖片載入完成
+          if (img.complete) {
+            updateCoords();
+          } else {
+            img.addEventListener("load", updateCoords);
+          }
+
+          isInitialized = true;
+          console.log("Image Map 初始化完成");
+        }
+
+        // DOM 載入完成後初始化
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initImageMap);
+        } else {
+          initImageMap();
+        }
+
+        // 備用：延遲初始化（防止 Webflow 干擾）
+        setTimeout(initImageMap, 100);
+        setTimeout(initImageMap, 500);
+      })();
+    </script>
   </body>
 </html>
