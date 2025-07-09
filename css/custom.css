@@ -93,6 +93,8 @@
   border: 1px solid rgba(97, 87, 248, 0.1);
   transition: all 0.3s ease;
   text-align: center;
+  display: none; /* 初始隱藏 */
+  opacity: 0; /* 初始透明 */
 }
 
 .sidebar-nav:hover {

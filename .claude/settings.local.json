@@ -7,7 +7,9 @@
       "Bash(rg:*)",
       "mcp__playwright__browser_take_screenshot",
       "mcp__ide__executeCode",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "WebFetch(domain:css-tricks.com)",
+      "WebFetch(domain:stackoverflow.com)"
     ],
     "deny": []
   }
