@@ -1,0 +1,33 @@
+/* 室內展示 Image Map 樣式 */
+
+/* 改良圖片映射容器樣式 */
+.div-block-58 {
+  position: relative;
+}
+
+.div-block-58 img[usemap] {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Image Map 區域 hover 效果 */
+.div-block-58 img[usemap]:hover {
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+  .div-block-58 img[usemap] {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .div-block-58 {
+    padding: 0 10px;
+  }
+}
