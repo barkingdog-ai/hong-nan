@@ -9,7 +9,14 @@
       "mcp__ide__executeCode",
       "Bash(grep:*)",
       "WebFetch(domain:css-tricks.com)",
-      "WebFetch(domain:stackoverflow.com)"
+      "WebFetch(domain:stackoverflow.com)",
+      "WebFetch(domain:www.letswrite.tw)",
+      "Bash(mkdir:*)",
+      "Bash(node:*)",
+      "Bash(python3:*)",
+      "mcp__playwright__browser_type",
+      "mcp__playwright__browser_select_option",
+      "mcp__playwright__browser_network_requests"
     ],
     "deny": []
   }
