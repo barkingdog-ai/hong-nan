@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Tue Jul 08 2025 03:37:30 GMT+0000 (Coordinated Universal Time)  -->
+<!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Wed Jul 30 2025 07:09:28 GMT+0000 (Coordinated Universal Time)  -->
 <html
   data-wf-page="663caae358211aba1cecdf8b"
   data-wf-site="663c9c19b3ba9192a4e409dd"
@@ -25,6 +25,10 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/custom.css" />
+    
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
 
     <script
       src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
@@ -123,7 +127,7 @@
           </h1>
           <div id="w-node-_45508683-664d-c161-ad9f-0eeb1d5d5283-1cecdf8b">
             <p class="paragraph-36">
-              為確保展廳參觀品質，每梯次參觀人數限20至30人。建議您提前預約，以確保行程順利。誠摯歡迎您的蒞臨。
+              為確保展廳參觀品質，每梯次參觀人數限20至30人。<br />建議您提前預約，以確保行程順利。誠摯歡迎您的蒞臨。
             </p>
           </div>
           <p class="paragraph-12">
@@ -140,7 +144,7 @@
       <div class="w-layout-blockcontainer container-11 w-container">
         <div class="combine-contact3_component">
           <div class="combine-contact3_content">
-            <h2 class="combine-heading-style-h2">預約申請</h2>
+            <h2 class="combine-heading-style-h2">預約導覽</h2>
             <div class="combine-text-size-regular">
               參觀對象｜適合所有年齡層的參觀者。<br />入場費用｜免費<br />團體預約｜針對學校團體或其他大型團體，我們提供特別的參觀計劃。<br />
             </div>
@@ -150,46 +154,126 @@
                 method="post"
                 class="combine-form_form"
                 id="custom-google-form"
-                action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSeZ_vhDrPAEZ4wlrBEeSkm10x31xAtvjfDKFUo9q7XFur70WA/formResponse"
+                action="https://docs.google.com/forms/u/0/d/1FAIpQLSdeBKB69Kd_DSWIF6M2a15x0gVT71pG7pThcR5A6cdtwml2Ig/formResponse"
                 target="iframe_redirect"
               >
+                <!-- 表單主標題 -->
+                <h3 class="form-main-title">六燃丁種宿舍導覽預約</h3>
+                
+                <!-- 1. 團體/個人名稱 -->
                 <div class="combine-form_field-wrapper">
-                  <label for="Contact-3-Name" class="combine-form_label"
-                    >姓名</label
-                  ><input
+                  <label for="group-name" class="combine-form_label required"
+                    >團體/個人名稱</label
+                  >
+                  <div
+                    class="combine-text-size-small"
+                    style="color: #666; margin-bottom: 8px"
+                  >
+                    （1）如為學校、公司、法人等，請填團體名稱<br />
+                    （2）如為個人，請填姓氏（例如：陳先生、張小姐、其他：不願透露）
+                  </div>
+                  <input
                     class="combine-form_input-grey w-input"
                     maxlength="256"
-                    name="Contact-3-Name"
-                    placeholder="輸入姓名"
+                    name="group-name"
+                    placeholder="請輸入團體名稱或個人姓氏"
                     type="text"
-                    id="Contact-3-Name"
+                    id="group-name"
                     required=""
                   />
                 </div>
+
+                <!-- 2. 人數 -->
                 <div class="combine-form_field-wrapper">
-                  <label for="Contact-3-Email" class="combine-form_label"
-                    >Email</label
-                  ><input
+                  <label for="group-size" class="combine-form_label required"
+                    >人數</label
+                  >
+                  <input
                     class="combine-form_input-grey w-input"
-                    maxlength="256"
-                    name="Contact-3-Email"
-                    placeholder="輸入您的email"
-                    type="email"
-                    id="Contact-3-Email"
+                    maxlength="10"
+                    name="group-size"
+                    placeholder="請輸入參觀人數"
+                    type="number"
+                    id="group-size"
+                    min="1"
                     required=""
                   />
                 </div>
+
+                <!-- 3. 預約導覽日期 -->
                 <div class="combine-form_field-wrapper">
-                  <label for="Contact-3-Message" class="combine-form_label"
-                    >備註</label
-                  ><textarea
-                    id="Contact-3-Message"
-                    name="Contact-3-Message"
-                    maxlength="5000"
-                    placeholder=""
+                  <label for="visit-date" class="combine-form_label required"
+                    >預約導覽日期</label
+                  >
+                  <div
+                    class="combine-text-size-small"
+                    style="color: #666; margin-bottom: 8px"
+                  >
+                    本館開放時間：週二至週日（除夕期間另行公告）
+                  </div>
+                  <input
+                    class="combine-form_input-grey w-input"
+                    name="visit-date"
+                    id="visit-date"
+                    type="text"
+                    placeholder="請選擇日期"
                     required=""
-                    class="combine-form_text-area-grey w-input"
-                  ></textarea>
+                    readonly
+                  />
+                </div>
+
+                <!-- 4. 預約導覽時間 -->
+                <div class="combine-form_field-wrapper">
+                  <label for="visit-time" class="combine-form_label required"
+                    >預約導覽時間(導覽時間約為 40 分鐘)</label
+                  >
+                  <select
+                    class="combine-form_input-grey w-select"
+                    name="visit-time"
+                    id="visit-time"
+                    required=""
+                  >
+                    <option value="">請選擇時間</option>
+                    <option value="10：30">10:30</option>
+                    <option value="13：30">13:30</option>
+                    <option value="15：30">15:30</option>
+                  </select>
+                </div>
+
+                <!-- 5. 聯絡電話 -->
+                <div class="combine-form_field-wrapper">
+                  <label for="contact-phone" class="combine-form_label required"
+                    >聯絡電話（以手機為佳）</label
+                  >
+                  <input
+                    class="combine-form_input-grey w-input"
+                    maxlength="20"
+                    name="contact-phone"
+                    placeholder="請輸入聯絡電話"
+                    type="tel"
+                    id="contact-phone"
+                    required=""
+                  />
+                </div>
+
+                <!-- 6. 資訊來源 -->
+                <div class="combine-form_field-wrapper">
+                  <label for="info-source" class="combine-form_label optional"
+                    >您從何處得知我們的相關資訊</label
+                  >
+                  <select
+                    class="combine-form_input-grey w-select"
+                    name="info-source"
+                    id="info-source"
+                  >
+                    <option value="">請選擇（選填）</option>
+                    <option value="曾經去過">曾經去過</option>
+                    <option value="朋友介紹">朋友介紹</option>
+                    <option value="六燃丁種宿舍FB">六燃丁種宿舍FB</option>
+                    <option value="六燃丁種宿舍官網">六燃丁種宿舍官網</option>
+                    <option value="中油員工眷屬">中油員工眷屬</option>
+                    <option value="其他">其他</option>
+                  </select>
                 </div>
                 <button
                   type="submit"
@@ -215,12 +299,31 @@
                   <p class="combine-modal__desc">
                     歡迎您使用線上報名服務，請務必詳細以下說明內容，再進行報名：
                   </p>
-                  <p>
-                    本事業部向您蒐集之個人資料（包含姓名、聯絡電話、E-mail等得以直接或間接識別個人的相關資訊），將僅限使用於「線上報名」相關服務，並遵守「個人資料保護法」之規定妥善保護您的個人資訊。在此前提下，您同意本事業部得於法律許可之範圍內處理及利用相關資料以提供資訊或服務。
-                    但您仍可依個人資料保護法，就您的個人資料向本事業部：(1)請求查詢或閱覽、(2)製給複製本、(3)請求補充或更正、(4)請求停止蒐集、處理及利用或(5)請求刪除。但因本事業部執行職務或業務所必需者，本事業部得拒絕之。
-                    您可自由選擇是否提供本事業部您的個人資料，但若您所提供之個人資料，經檢舉或本事業部發現不足以確認您的身分真實性或其他個人資料冒用、盜用、資料不實等情形，本事業部將不予處理。
-                    您瞭解並同意符合個人資料保護法及相關法規之要求，具有書面同意本事業部蒐集、處理及利用您的個人資料之效果。
-                  </p>
+                  <div class="privacy-policy">
+                    <p>
+                      <strong>1.</strong>
+                      本事業部向您蒐集之個人資料（包含姓名、聯絡電話、E-mail等得以直接或間接識別個人的相關資訊），將僅限使用於「線上報名」相關服務，並遵守「個人資料保護法」之規定妥善保護您的個人資訊。在此前提下，您同意本事業部得於法律許可之範圍內處理及利用相關資料以提供資訊或服務。
+                    </p>
+
+                    <p>
+                      <strong>2.</strong>
+                      但您仍可依個人資料保護法，就您的個人資料向本事業部：(1)請求查詢或閱覽、(2)製給複製本、(3)請求補充或更正、(4)請求停止蒐集、處理及利用或(5)請求刪除。但因本事業部執行職務或業務所必需者，本事業部得拒絕之。
+                    </p>
+
+                    <p>
+                      <strong>3.</strong>
+                      您可自由選擇是否提供本事業部您的個人資料，但若您所提供之個人資料，經檢舉或本事業部發現不足以確認您的身分真實性或其他個人資料冒用、盜用、資料不實等情形，本事業部將不予處理。
+                    </p>
+
+                    <p>
+                      <strong>4.</strong>
+                      此外，過程中將進行拍照或錄影，作為網路行銷或成果紀錄使用。若您不希望入鏡，請於現場主動告知工作人員協助避開拍攝。
+                    </p>
+
+                    <p class="agreement-clause">
+                      您瞭解並同意符合個人資料保護法及相關法規之要求，具有書面同意本事業部蒐集、處理及利用您的個人資料之效果。
+                    </p>
+                  </div>
                   <div class="combine-modal__actions">
                     <button
                       id="modal-agree"
@@ -366,6 +469,11 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/webflow.js" type="text/javascript"></script>
+    
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/zh-tw.js"></script>
+    
     <script src="js/custom-googgle-form.js" type="text/javascript"></script>
   </body>
 </html>
