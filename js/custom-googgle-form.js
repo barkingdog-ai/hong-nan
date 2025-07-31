@@ -28,10 +28,38 @@
   const datePicker = flatpickr(visitDateInput, {
     locale: "zh_tw",
     dateFormat: "Y-m-d",
-    minDate: "today",
+    minDate: new Date(),
     placeholder: "請選擇日期",
     allowInput: false
   });
+
+  // 初始化 select 元素的 placeholder 顏色
+  function initSelectPlaceholderColor() {
+    [visitTimeInput, infoSourceInput].forEach(select => {
+      if (select.value === "") {
+        select.classList.add('placeholder-color');
+      } else {
+        select.classList.remove('placeholder-color');
+      }
+    });
+  }
+
+  // 監聽 select 變化來更新顏色
+  function handleSelectChange(event) {
+    const select = event.target;
+    if (select.value === "") {
+      select.classList.add('placeholder-color');
+    } else {
+      select.classList.remove('placeholder-color');
+    }
+  }
+
+  // 添加事件監聽器
+  visitTimeInput.addEventListener('change', handleSelectChange);
+  infoSourceInput.addEventListener('change', handleSelectChange);
+
+  // 初始化
+  initSelectPlaceholderColor();
 
   // 驗證函數
   function validateField(input, fieldName, isRequired = true) {
@@ -172,6 +200,9 @@
          visitTimeInput].forEach(input => {
           input.classList.remove('error', 'success');
         });
+        
+        // 重新初始化 select 的 placeholder 顏色
+        initSelectPlaceholderColor();
         
         // 清空錯誤狀態
         Object.keys(inputError).forEach(key => {

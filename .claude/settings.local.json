@@ -16,7 +16,8 @@
       "Bash(python3:*)",
       "mcp__playwright__browser_type",
       "mcp__playwright__browser_select_option",
-      "mcp__playwright__browser_network_requests"
+      "mcp__playwright__browser_network_requests",
+      "Bash(npm test)"
     ],
     "deny": []
   }

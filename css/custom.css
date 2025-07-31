@@ -218,6 +218,11 @@
   margin-bottom: 20px !important;
 }
 
+/* 錯誤提示區塊底部間距 */
+.combine-form_error-message {
+  margin-bottom: 20px !important;
+}
+
 /* 表單欄位間距優化 */
 .combine-form_field-wrapper {
   margin-bottom: 1.5rem !important;
@@ -239,4 +244,69 @@
   color: #2c3e50 !important;
   margin-bottom: 0.5rem !important;
   display: block !important;
+}
+
+/* 統一 placeholder 和預設選項文字為淺灰色 */
+.combine-form_input-grey::placeholder,
+.w-input::placeholder,
+.w-select::placeholder {
+  color: #999 !important;
+}
+
+/* Select 下拉選單當選擇空值時的文字顏色 */
+.combine-form_input-grey[value=""],
+.w-select[value=""] {
+  color: #999 !important;
+}
+
+/* Select 下拉選單中的預設選項（空值選項）文字顏色 */
+.combine-form_input-grey option[value=""],
+.w-select option[value=""] {
+  color: #999 !important;
+}
+
+/* Select 下拉選單的一般選項保持正常顏色 */
+.combine-form_input-grey option:not([value=""]),
+.w-select option:not([value=""]) {
+  color: #333 !important;
+}
+
+/* Select 下拉選單沒有選擇值時的樣式 - 使用 CSS 選擇器 */
+.combine-form_input-grey:invalid,
+.w-select:invalid {
+  color: #999 !important;
+}
+
+/* Select 下拉選單有選擇值時恢復正常顏色 */
+.combine-form_input-grey:valid,
+.w-select:valid {
+  color: var(--combine-library--grey-800) !important;
+}
+
+/* 針對 select 元素的預設狀態強制使用淺灰色 */
+.combine-form_input-grey.placeholder-color,
+.w-select.placeholder-color {
+  color: #999 !important;
+}
+
+/* select 有值時移除淺灰色類別後的正常顏色 */
+.combine-form_input-grey:not(.placeholder-color),
+.w-select:not(.placeholder-color) {
+  color: var(--combine-library--grey-800) !important;
+}
+
+/* Flatpickr 日期選擇器自訂樣式 */
+/* 讓日期輸入欄位背景保持白色，與其他欄位一致 */
+.flatpickr-input {
+  background-color: white !important;
+}
+
+/* 修復可選擇日期的顏色 - 讓它們看起來明顯可點選 */
+.flatpickr-calendar .flatpickr-day:not(.flatpickr-disabled) {
+  color: #393939 !important;
+}
+
+/* 確保 hover 狀態也正確 */
+.flatpickr-calendar .flatpickr-day:not(.flatpickr-disabled):hover {
+  color: #393939 !important;
 }
